@@ -85,6 +85,8 @@ public class CreditApplicationServiceTests
     [InlineData(40000, 1, 10000, 5)]
     [InlineData(60000, 1, 0, 6)]
     [InlineData(60001, 1, 0, 6)]
+    [InlineData(40000, 12 * 6, 0, 6)] // 6 year term
+    [InlineData(20000, 12 * 6, 20000, 6)] // 6 year term
     public void TestInterestMatchesExpectation(int creditAmount, int term, int preexistingCreditAmount, int expectedInterestRate)
     {
         // arrange
