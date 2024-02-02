@@ -30,6 +30,19 @@ public class CreditApplicationServiceTests
     }
 
     [Fact]
+    public void TestArgumentExceptionThrownWhenInvalidRequest()
+    {
+        // arrange
+        var request = new CreditApplicationRequest(
+            CreditAmount: -1,
+            TermMonths: 12,
+            PreexistingCreditAmount: 0);
+
+        // act & assert
+        Assert.Throws<ArgumentException>(() => _service.MakeDecision(request));
+    }
+
+    [Fact]
     public void TestDecisionIsNo_When_AppliedAmountLessThan2000()
     {
         // arrange
