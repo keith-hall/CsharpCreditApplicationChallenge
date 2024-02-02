@@ -21,3 +21,5 @@ alternatively, use your favorite IDE.
 - add tests to prove config is read and parsed correctly
 - add tests to prove we get a 400 Bad Request response from the API when sending negative values in the request
 - parse config into correctly typed variables immediately instead of doing the logic in the service
+- clarify about the percentages for the missing ranges
+- add tests to prove we log the correct information for debugging purposes
