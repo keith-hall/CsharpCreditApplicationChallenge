@@ -22,7 +22,8 @@ public class CreditApplicationController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public ActionResult<CreditApplicationResponse> ComputeCreditApplication(CreditApplicationRequest application)
     {
-        if (_service.GetValidationErrors(application).Any()) {
+        if (_service.GetValidationErrors(application).Any())
+        {
             return BadRequest();
         }
 
