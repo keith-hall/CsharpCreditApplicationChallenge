@@ -96,6 +96,8 @@ public class CreditApplicationService : ICreditApplicationService
                 );
             if (totalFutureDebt < entry.Key)
             {
+                // TODO: potentially (also) have the service return the total future debt
+                //       and use a different model in the RestAPI so it isn't returned to the client
                 _logger.LogInformation($"Term: {application.TermMonths}, " +
                     $"Pre existing credit amount: {application.PreexistingCreditAmount}, " +
                     $"Credit amount: {application.CreditAmount}, " +
@@ -104,7 +106,8 @@ public class CreditApplicationService : ICreditApplicationService
                 return entry.Value;
             }
         }
-        // this line should be unreachable because of the use of decimal.MaxValue
+        // this line should be unreachable because of the use of decimal.MaxValue in the config
+        // ideally we'd have a test proving that the config is correct so that this can never happen
         throw new InvalidOperationException("Unable to compute interest rate");
     }
 
