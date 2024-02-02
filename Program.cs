@@ -1,6 +1,13 @@
+using CreditApplication.Config;
+using CreditApplication.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<CreditApplicationServiceOptions>(
+    builder.Configuration.GetSection(CreditApplicationServiceOptions.CreditApplicationService));
+
+builder.Services.AddSingleton<ICreditApplicationService, CreditApplicationService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
